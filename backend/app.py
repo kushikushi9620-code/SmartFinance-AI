@@ -256,6 +256,7 @@ def reset_password():
         )
 
         conn.commit()
+        conn.close()
 
         if cursor.rowcount == 0:
             conn.close()
