@@ -52,7 +52,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/add-expense", {
+      const response = await fetch("https://smartfinance-backend-kushi.onrender.com/add-expense", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
