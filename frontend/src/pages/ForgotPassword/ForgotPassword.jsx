@@ -24,7 +24,7 @@ function ForgotPassword() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/forgot-password",
+        "https://smartfinance-ai-ycjp.onrender.com/forgot-password",
         {
           email: email,
         }
@@ -55,7 +55,7 @@ function ForgotPassword() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/verify-otp",
+        "https://smartfinance-ai-ycjp.onrender.com/verify-otp",
         {
           email: email,
           otp: otp,
@@ -92,7 +92,7 @@ function ForgotPassword() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/reset-password",
+        "https://smartfinance-ai-ycjp.onrender.com/reset-password",
         {
           email: email,
           new_password: newPassword,

@@ -24,7 +24,7 @@ function Home() {
     setReply("");
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/chat", {
+      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/add-expense", {
+      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/add-expense", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ function Home() {
 
   const fetchExpenses = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/expenses");
+      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/expenses");
       const data = await response.json();
       setExpenses(data);
     } catch (error) {
@@ -98,7 +98,7 @@ function Home() {
   const deleteExpense = async (id) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/delete-expense/${id}`,
+        `https://smartfinance-ai-ycjp.onrender.com/delete-expense/${id}`,
         {
           method: "DELETE",
         }

@@ -17,7 +17,7 @@ function BudgetPlanner() {
     const loadExpenses = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:5000/expenses/${userId}`
+          `https://smartfinance-ai-ycjp.onrender.com/expenses/${userId}`
         );
 
         const total = response.data.reduce(
@@ -50,7 +50,7 @@ function BudgetPlanner() {
     try {
       // Save user's income in database
       await axios.post(
-        "http://127.0.0.1:5000/save-income",
+        "https://smartfinance-ai-ycjp.onrender.com/save-income",
         {
           user_id: userId,
           income: Number(income),

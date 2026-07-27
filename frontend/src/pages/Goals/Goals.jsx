@@ -15,7 +15,7 @@ function Goals() {
   const loadSavings = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/dashboard-summary/${user_id}`
+        `https://smartfinance-ai-ycjp.onrender.com/dashboard-summary/${user_id}`
       );
 
       const currentSavings = Number(response.data.savings) || 0;
@@ -33,7 +33,7 @@ function Goals() {
   const loadGoals = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/goals/${user_id}`
+        `https://smartfinance-ai-ycjp.onrender.com/goals/${user_id}`
       );
 
       setGoals(response.data);
@@ -97,7 +97,7 @@ function Goals() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/add-goal",
+        "https://smartfinance-ai-ycjp.onrender.com/add-goal",
         {
           user_id: Number(user_id),
           goal: goal.trim(),
