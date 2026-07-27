@@ -1,0 +1,25 @@
+# Secret files
+.env
+*.env
+
+# Database
+*.db
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# React / Node
+node_modules/
+dist/
+
+# Generated reports
+*.pdf
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db

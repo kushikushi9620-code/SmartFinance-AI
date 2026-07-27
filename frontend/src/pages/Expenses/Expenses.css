@@ -1,0 +1,27 @@
+input {
+  width: 250px;
+  padding: 10px;
+  margin: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 10px;
+}

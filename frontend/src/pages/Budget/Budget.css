@@ -1,0 +1,46 @@
+.budget-container{
+    padding:40px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+.budget-container h1{
+    color:#1e3a8a;
+    margin-bottom:30px;
+}
+
+.budget-card{
+    width:450px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.budget-card input{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.result{
+    margin-top:20px;
+}
+
+.result h3{
+    margin-top:15px;
+    color:#444;
+}
+
+.result p{
+    color:#2563eb;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.balance{
+    color:green;
+}
