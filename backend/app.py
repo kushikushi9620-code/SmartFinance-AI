@@ -326,15 +326,16 @@ def home():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    try:
+    conn = None
 
+    try:
         data = request.get_json()
 
         name = data["name"]
         email = data["email"]
         password = data["password"]
 
-        conn = sqlite3.connect("expenses.db")
+        conn = sqlite3.connect("expenses.db", timeout=20)
         cursor = conn.cursor()
 
         cursor.execute(
@@ -343,23 +344,24 @@ def signup():
         )
 
         conn.commit()
-        conn.close()
 
         return jsonify({
             "message": "Signup Successful"
-        })
+        }), 200
 
     except sqlite3.IntegrityError:
-
         return jsonify({
             "message": "Email already exists"
         }), 400
 
     except Exception as e:
-
         return jsonify({
             "message": str(e)
         }), 500
+
+    finally:
+        if conn:
+            conn.close()
 
 
 # ------------------ LOGIN ------------------ #
