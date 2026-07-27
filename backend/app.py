@@ -292,15 +292,18 @@ conn = sqlite3.connect("expenses.db", check_same_thread=False)
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS users(
+CREATE TABLE IF NOT EXISTS goals(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
+    user_id INTEGER NOT NULL,
+    goal TEXT NOT NULL,
+    target REAL NOT NULL,
+    saved REAL NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES users(id)
 )
 """)
 
 conn.commit()
+conn.close()
 # ------------------ CREATE GOALS TABLE ------------------ #
 
 cursor.execute("""
