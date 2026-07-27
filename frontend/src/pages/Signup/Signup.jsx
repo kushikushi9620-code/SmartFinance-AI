@@ -40,7 +40,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/signup",
+        "https://smartfinance-ai-ycjp.onrender.com/signup",
         {
           name: user.name,
           email: user.email,
