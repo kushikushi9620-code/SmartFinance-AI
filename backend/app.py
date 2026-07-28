@@ -19,7 +19,6 @@ load_dotenv()
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-print("EMAIL_ADDRESS =", EMAIL_ADDRESS)
 
 
 app = Flask(__name__)
@@ -210,7 +209,7 @@ def verify_otp():
         return jsonify({
             "message": "Unable to verify OTP"
         }), 500
-
+  
 
 # ------------------ RESET PASSWORD ------------------ #
 
@@ -256,7 +255,6 @@ def reset_password():
         )
 
         conn.commit()
-        conn.close()
 
         if cursor.rowcount == 0:
             conn.close()
@@ -280,11 +278,6 @@ def reset_password():
         return jsonify({
             "message": "Unable to reset password"
         }), 500
-# ------------------ GEMINI ------------------ #
-
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
 
 # ------------------ CREATE USERS TABLE ------------------ #
 
@@ -292,18 +285,29 @@ conn = sqlite3.connect("expenses.db", check_same_thread=False)
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS goals(
+CREATE TABLE IF NOT EXISTS users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    income REAL DEFAULT 0
+)
+""")
+
+# ------------------ CREATE EXPENSES TABLE ------------------ #
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS expenses(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    amount REAL NOT NULL,
+    category TEXT NOT NULL,
+    date TEXT NOT NULL,
     user_id INTEGER NOT NULL,
-    goal TEXT NOT NULL,
-    target REAL NOT NULL,
-    saved REAL NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id)
 )
 """)
 
-conn.commit()
-conn.close()
 # ------------------ CREATE GOALS TABLE ------------------ #
 
 cursor.execute("""
@@ -318,6 +322,7 @@ CREATE TABLE IF NOT EXISTS goals(
 """)
 
 conn.commit()
+conn.close()
 
 # ------------------ HOME ------------------ #
 
