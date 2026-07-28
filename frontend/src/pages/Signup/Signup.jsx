@@ -40,7 +40,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "https://smartfinance-ai-ycjp.onrender.com/signup",
+        "https://smartfinace-backend-kushi.onrender.com/signup",
         {
           name: user.name,
           email: user.email,
