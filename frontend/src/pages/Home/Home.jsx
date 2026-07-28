@@ -24,7 +24,7 @@ function Home() {
     setReply("");
 
     try {
-      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/chat", {
+      const response = await fetch("https://smartfinance-backend-kushi.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ function Home() {
 
   const fetchExpenses = async () => {
     try {
-      const response = await fetch("https://smartfinance-ai-ycjp.onrender.com/expenses");
+      const response = await fetch("https://smartfinance-backend-kushi.onrender.com/expenses");
       const data = await response.json();
       setExpenses(data);
     } catch (error) {
@@ -98,7 +98,7 @@ function Home() {
   const deleteExpense = async (id) => {
     try {
       const response = await fetch(
-        `https://smartfinance-ai-ycjp.onrender.com/delete-expense/${id}`,
+        `https://smartfinance-backend-kushi.onrender.com/delete-expense/${id}`,
         {
           method: "DELETE",
         }

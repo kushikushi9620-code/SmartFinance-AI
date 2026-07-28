@@ -21,7 +21,7 @@ function Dashboard() {
       const user_id = localStorage.getItem("user_id");
 
       const response = await axios.get(
-        `http://127.0.0.1:5000/dashboard-summary/${user_id}`
+        `https://smartfinance-backend-kushi.onrender.com/dashboard-summary/${user_id}`
       );
 
       setSummary(response.data);
@@ -35,7 +35,7 @@ function Dashboard() {
     const user_id = localStorage.getItem("user_id");
 
     window.open(
-      `http://127.0.0.1:5000/download-report/${user_id}`,
+      `https://smartfinance-backend-kushi.onrender.com/download-report/${user_id}`,
       "_blank"
     );
   };

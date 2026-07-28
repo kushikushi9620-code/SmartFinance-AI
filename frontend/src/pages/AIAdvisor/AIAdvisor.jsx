@@ -21,7 +21,7 @@ function AIAdvisor() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/chat",
+        "https://smartfinance-backend-kushi.onrender.com/chat",
         {
           message: question.trim(),
         }
@@ -44,7 +44,7 @@ function AIAdvisor() {
       const user_id = localStorage.getItem("user_id");
 
       const response = await axios.post(
-        `http://127.0.0.1:5000/ai-insights/${user_id}`
+        `https://smartfinance-backend-kushi.onrender.com/ai-insights/${user_id}`
       );
 
       setAnalysis(response.data.reply);

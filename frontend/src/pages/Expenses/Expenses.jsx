@@ -38,7 +38,7 @@ function Expenses() {
       setLoading(true);
 
       const response = await axios.get(
-        `http://127.0.0.1:5000/expenses/${userId}`
+        `https://smartfinance-backend-kushi.onrender.com/expenses/${userId}`
       );
 
       setExpenses(response.data);
@@ -63,7 +63,7 @@ function Expenses() {
 
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/search-expenses/${userId}/${encodeURIComponent(
+        `https://smartfinance-backene-kushi.onrender.com/search-expenses/${userId}/${encodeURIComponent(
           search.trim()
         )}`
       );
@@ -102,7 +102,7 @@ function Expenses() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/add-expense",
+        "https://smartfinance-backend-kushi.onrender.com/add-expense",
         {
           user_id: Number(userId),
           title: expense.title.trim(),
@@ -166,7 +166,7 @@ function Expenses() {
 
     try {
       const response = await axios.put(
-        `http://127.0.0.1:5000/update-expense/${editId}`,
+        `https://smartfinance-backend-kushi.onrender.com/update-expense/${editId}`,
         {
           title: expense.title.trim(),
           amount: Number(expense.amount),
@@ -204,7 +204,7 @@ function Expenses() {
 
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:5000/delete-expense/${id}`
+        `https://smartfinance-backend-kushi.onrender.com/delete-expense/${id}`
       );
 
       alert(response.data.message);

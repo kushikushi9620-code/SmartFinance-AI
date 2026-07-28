@@ -59,7 +59,7 @@ function Profile() {
 
     try {
       const response = await axios.put(
-        "http://127.0.0.1:5000/change-password",
+        "https://smartfinance-backend-kushi.onrender.com/change-password",
         {
           user_id: userId,
           current_password: passwords.currentPassword,

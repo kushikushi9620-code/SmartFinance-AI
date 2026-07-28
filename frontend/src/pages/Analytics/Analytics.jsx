@@ -48,7 +48,7 @@ function Analytics() {
       const user_id = localStorage.getItem("user_id");
 
       const response = await axios.get(
-        `http://127.0.0.1:5000/analytics-data/${user_id}`
+        `https://smartfinance-backend-kushi.onrender.com/analytics-data/${user_id}`
       );
 
       const labels = response.data.map(
