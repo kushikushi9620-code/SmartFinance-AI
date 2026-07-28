@@ -330,6 +330,25 @@ conn.close()
 def home():
     return "Backend Running"
 
+
+# ------------------ VIEW USERS (TEMPORARY) ------------------ #
+
+@app.route("/users")
+def view_users():
+    conn = sqlite3.connect("expenses.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT id, name, email, password
+        FROM users
+    """)
+
+    users = cursor.fetchall()
+
+    conn.close()
+
+    return jsonify(users)
+
 # ------------------ SIGNUP ------------------ #
 
 @app.route("/signup", methods=["POST"])
