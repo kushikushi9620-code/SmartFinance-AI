@@ -380,6 +380,7 @@ def signup():
         print("Name :", name)
         print("Email:", email)
 
+
         cursor.execute("SELECT id, name, email FROM users")
         print("Users in database:")
         print(cursor.fetchall())
@@ -413,7 +414,7 @@ def login():
     try:
         data = request.get_json()
 
-        email = data["email"]
+        email = data["email"].strip().lower()
         password = data["password"]
 
         conn = sqlite3.connect("expenses.db")
