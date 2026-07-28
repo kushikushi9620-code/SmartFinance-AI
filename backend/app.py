@@ -358,19 +358,32 @@ def signup():
     try:
         data = request.get_json()
 
-        name = data["name"]
-        email = data["email"]
+        name = data["name"].strip()
+        email = data["email"].strip().lower()
         password = data["password"]
 
         conn = sqlite3.connect("expenses.db", timeout=20)
         cursor = conn.cursor()
 
         cursor.execute(
-            "INSERT INTO users(name,email,password) VALUES(?,?,?)",
+            """
+            INSERT INTO users(name, email, password)
+            VALUES (?, ?, ?)
+            """,
             (name, email, password)
         )
 
         conn.commit()
+
+        # ---------- DEBUG ----------
+        print("========== SIGNUP SUCCESS ==========")
+        print("Name :", name)
+        print("Email:", email)
+
+        cursor.execute("SELECT id, name, email FROM users")
+        print("Users in database:")
+        print(cursor.fetchall())
+        # ---------------------------
 
         return jsonify({
             "message": "Signup Successful"
@@ -382,6 +395,8 @@ def signup():
         }), 400
 
     except Exception as e:
+        print("SIGNUP ERROR:", e)
+
         return jsonify({
             "message": str(e)
         }), 500
