@@ -417,39 +417,48 @@ def login():
         email = data["email"].strip().lower()
         password = data["password"]
 
+        print("EMAIL RECEIVED:", email)
+        print("PASSWORD RECEIVED:", password)
+
         conn = sqlite3.connect("expenses.db")
         cursor = conn.cursor()
 
         cursor.execute(
-            """
-            SELECT id, name, email
-            FROM users
-            WHERE email=? AND password=?
-            """,
-            (email, password)
+            "SELECT id, name, email, password FROM users WHERE email=?",
+            (email,)
         )
 
         user = cursor.fetchone()
 
+        print("DATABASE USER:", user)
+
         conn.close()
 
-        if user:
+        if user is None:
             return jsonify({
-                "message": "Login Successful",
-                "user_id": user[0],
-                "name": user[1],
-                "email": user[2]
-            }), 200
+                "message": "Email not found"
+            }), 401
+
+        if user[3] != password:
+            print("DB PASSWORD:", user[3])
+            print("ENTERED PASSWORD:", password)
+
+            return jsonify({
+                "message": "Invalid Email or Password"
+            }), 401
 
         return jsonify({
-            "message": "Invalid Email or Password"
-        }), 401
+            "message": "Login Successful",
+            "user_id": user[0],
+            "name": user[1],
+            "email": user[2]
+        }), 200
 
     except Exception as e:
-        print("LOGIN ERROR:", e)
+        print(e)
 
         return jsonify({
-            "message": "Something went wrong during login"
+            "message": str(e)
         }), 500
 
     # ------------------ CHANGE PASSWORD ------------------ #
